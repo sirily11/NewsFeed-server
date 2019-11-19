@@ -1,0 +1,15 @@
+version: "3"
+services:
+  server:
+    build: ./
+    image: server
+    ports:
+      - 80:80
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./mydb.db:/usr/local/newsfeed_server/mydb.db
+    command: >
+      sh -c "pipenv run python manage.py migrate &&
+             pipenv run python manage.py test &&
+             pipenv run python manage.py runserver 0.0.0.0:80"

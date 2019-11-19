@@ -1,0 +1,4 @@
+*.db
+*.sh
+publish.sh
+.idea
